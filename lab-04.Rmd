@@ -30,11 +30,11 @@ The La Quinta dataset has `r nrow(laquinta)` rows and `r ncol(laquinta)` columns
 
 ### Exercise 3
 
-From looking at the websites, it seems that there are La Quinta hotels outside of the U.S. These countries include Canada, Mexico, China, New Zealand, Georgia, Turkey, UAE, Chile, Colombia, and Ecuador. On the other hand, Denny's does Denny’s has locations in countries such as `r paste(unique(dennys$state[!dennys$state %in% state.abb]), collapse = ", ")` (if any).
+From looking at the La Quinta website, there are La Quinta hotels outside of the U.S. These countries include Canada, Mexico, China, New Zealand, Georgia, Turkey, UAE, Chile, Colombia, and Ecuador. On the other hand, from looking at the Denny's website it seems that they only have locations in the U.S. 
 
 ### Exercise 4
 
-...
+One way to determine whether either establishment has locations outside of the U.S. by looking at the data is to filter by country by using code. This way, you are able to pull out all locations that are not in the United States. 
 
 ### Exercise 5
 

@@ -14,7 +14,7 @@ install.packages("devtools", repos = "https://cloud.r-project.org")
 
     ## 
     ## The downloaded binary packages are in
-    ##  /var/folders/tb/8n78wkj122z51qjf26rn855h0000gn/T//Rtmp4jC5Rt/downloaded_packages
+    ##  /var/folders/tb/8n78wkj122z51qjf26rn855h0000gn/T//Rtmp4nMI7d/downloaded_packages
 
 ``` r
 devtools::install_github("tidyverse/dsbox")
@@ -48,15 +48,18 @@ zipcode, longitude, and latitude.
 
 ### Exercise 3
 
-From looking at the websites, it seems that there are La Quinta hotels
+From looking at the La Quinta website, there are La Quinta hotels
 outside of the U.S. These countries include Canada, Mexico, China, New
 Zealand, Georgia, Turkey, UAE, Chile, Colombia, and Ecuador. On the
-other hand, Denny’s does Denny’s has locations in countries such as DC
-(if any).
+other hand, from looking at the Denny’s website it seems that they only
+have locations in the U.S.
 
 ### Exercise 4
 
-…
+One way to determine whether either establishment has locations outside
+of the U.S. by looking at the data is to filter by country by using
+code. This way, you are able to pull out all locations that are not in
+the United States.
 
 ### Exercise 5
 
