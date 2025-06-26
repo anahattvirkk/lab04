@@ -1,4 +1,4 @@
-Lab 04 - La Quinta is Spanish for next to Denny’s, Pt. 1
+Lab 04 - Visualizing Spatial Data
 ================
 Anahatt Virk
 06/26/25
@@ -14,7 +14,7 @@ install.packages("devtools", repos = "https://cloud.r-project.org")
 
     ## 
     ## The downloaded binary packages are in
-    ##  /var/folders/tb/8n78wkj122z51qjf26rn855h0000gn/T//RtmpfL8oLI/downloaded_packages
+    ##  /var/folders/tb/8n78wkj122z51qjf26rn855h0000gn/T//Rtmp4jC5Rt/downloaded_packages
 
 ``` r
 devtools::install_github("tidyverse/dsbox")
@@ -36,19 +36,23 @@ states <- read_csv("data/states.csv")
 
 ### Exercise 1
 
-Remove this text, and add your answer for Exercise 1 here. Add code
-chunks as needed. Don’t forget to label your code chunk. Do not use
-spaces in code chunk labels.
+The Denny’s dataset has 1643 rows and 6 columns. Each row represents one
+Denny’s location and the variables are address, city, state, zipcode,
+longitude, and latitude.
 
 ### Exercise 2
 
-Remove this text, and add your answer for Exercise 2 here. Add code
-chunks as needed. Don’t forget to label your code chunk. Do not use
-spaces in code chunk labels.
+The La Quinta dataset has 909 rows and 6 columns. Each row represents
+one La Quinta location and the variables are address, city, state,
+zipcode, longitude, and latitude.
 
 ### Exercise 3
 
-…
+From looking at the websites, it seems that there are La Quinta hotels
+outside of the U.S. These countries include Canada, Mexico, China, New
+Zealand, Georgia, Turkey, UAE, Chile, Colombia, and Ecuador. On the
+other hand, Denny’s does Denny’s has locations in countries such as DC
+(if any).
 
 ### Exercise 4
 

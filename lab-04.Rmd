@@ -1,5 +1,5 @@
 ---
-title: "Lab 04 - La Quinta is Spanish for next to Denny's, Pt. 1"
+title: "Lab 04 - Visualizing Spatial Data"
 author: "Anahatt Virk"
 date: "06/26/25"
 output: github_document
@@ -22,21 +22,15 @@ states <- read_csv("data/states.csv")
 
 ### Exercise 1
 
-Remove this text, and add your answer for Exercise 1 here.
-Add code chunks as needed.
-Don't forget to label your code chunk.
-Do not use spaces in code chunk labels.
+The Denny's dataset has `r nrow(dennys)` rows and `r ncol(dennys)` columns. Each row represents one Denny's location and the variables are address, city, state, zipcode, longitude, and latitude. 
 
 ### Exercise 2
 
-Remove this text, and add your answer for Exercise 2 here.
-Add code chunks as needed.
-Don't forget to label your code chunk.
-Do not use spaces in code chunk labels.
+The La Quinta dataset has `r nrow(laquinta)` rows and `r ncol(laquinta)` columns. Each row represents one La Quinta location and the variables are address, city, state, zipcode, longitude, and latitude. 
 
 ### Exercise 3
 
-...
+From looking at the websites, it seems that there are La Quinta hotels outside of the U.S. These countries include Canada, Mexico, China, New Zealand, Georgia, Turkey, UAE, Chile, Colombia, and Ecuador. On the other hand, Denny's does Denny’s has locations in countries such as `r paste(unique(dennys$state[!dennys$state %in% state.abb]), collapse = ", ")` (if any).
 
 ### Exercise 4
 
