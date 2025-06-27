@@ -14,7 +14,7 @@ install.packages("devtools", repos = "https://cloud.r-project.org")
 
     ## 
     ## The downloaded binary packages are in
-    ##  /var/folders/tb/8n78wkj122z51qjf26rn855h0000gn/T//Rtmp4nMI7d/downloaded_packages
+    ##  /var/folders/tb/8n78wkj122z51qjf26rn855h0000gn/T//RtmpP8Q3JV/downloaded_packages
 
 ``` r
 devtools::install_github("tidyverse/dsbox")
@@ -57,16 +57,59 @@ have locations in the U.S.
 ### Exercise 4
 
 One way to determine whether either establishment has locations outside
-of the U.S. by looking at the data is to filter by country by using
-code. This way, you are able to pull out all locations that are not in
-the United States.
+of the U.S. by looking at the data is to filter by state by using code.
+This way, you are able to pull out all international locations. You
+could also do so by filtering by city.
 
 ### Exercise 5
 
-…
+``` r
+dn <- dennys %>%
+  filter(!(state %in% states$abbreviation))
+```
+
+There are 0 Denny’s locations outside the US.
 
 ### Exercise 6
 
-…
+``` r
+dn %>%
+  mutate(country = "United States")
+```
 
-Add exercise headings as needed.
+    ## # A tibble: 0 × 7
+    ## # ℹ 7 variables: address <chr>, city <chr>, state <chr>, zip <chr>,
+    ## #   longitude <dbl>, latitude <dbl>, country <chr>
+
+There are 0 Denny’s locations outside the US.
+
+### Exercise 7
+
+Outside of the U.S., there are La Quinta hotels in Canada, Mexico,
+China, New Zealand, Georgia, Turkey, UAE, Chile, Colombia, and Ecuador.
+
+### Exercise 8
+
+``` r
+lq <- laquinta %>% 
+  mutate(country = case_when(
+    state %in% state.abb ~ "United States",
+    state %in% c("ON", "BC") ~ "Canada",
+    state == "ANT" ~ "Colombia",
+    state == "MX" ~ "Mexico", 
+    state == "CH" ~ "China",
+    state == "NZ" ~ "New Zealand",
+    state == "GE" ~ "Georgia",
+    state == "TR" ~ "Turkey",
+    state %in% c("AE", "UAE") ~ "UAE",
+    state == "CL" ~ "Chile",
+    state == "EC" ~ "Ecuador"
+  ))
+```
+
+``` r
+lq <- lq %>%
+  filter(country == "United States")
+```
+
+### Exercise 9

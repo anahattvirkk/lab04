@@ -34,16 +34,52 @@ From looking at the La Quinta website, there are La Quinta hotels outside of the
 
 ### Exercise 4
 
-One way to determine whether either establishment has locations outside of the U.S. by looking at the data is to filter by country by using code. This way, you are able to pull out all locations that are not in the United States. 
+One way to determine whether either establishment has locations outside of the U.S. by looking at the data is to filter by state by using code. This way, you are able to pull out all international locations. You could also do so by filtering by city. 
 
 ### Exercise 5
 
-...
+```{r dennys-by-state}
+dn <- dennys %>%
+  filter(!(state %in% states$abbreviation))
+```
+
+There are `r nrow(dn)` Denny’s locations outside the US.
 
 ### Exercise 6
 
-...
+```{r dennys-by-country}
+dn %>%
+  mutate(country = "United States")
+```
 
- 
-Add exercise headings as needed.
+There are `r nrow(dn)` Denny’s locations outside the US.
 
+### Exercise 7
+
+Outside of the U.S., there are La Quinta hotels in Canada, Mexico, China, New Zealand, Georgia, Turkey, UAE, Chile, Colombia, and Ecuador.
+
+### Exercise 8
+
+```{r laquinta-by-country}
+lq <- laquinta %>% 
+  mutate(country = case_when(
+    state %in% state.abb ~ "United States",
+    state %in% c("ON", "BC") ~ "Canada",
+    state == "ANT" ~ "Colombia",
+    state == "MX" ~ "Mexico", 
+    state == "CH" ~ "China",
+    state == "NZ" ~ "New Zealand",
+    state == "GE" ~ "Georgia",
+    state == "TR" ~ "Turkey",
+    state %in% c("AE", "UAE") ~ "UAE",
+    state == "CL" ~ "Chile",
+    state == "EC" ~ "Ecuador"
+  ))
+```
+
+```{r laquinta-us}
+lq <- lq %>%
+  filter(country == "United States")
+```
+
+### Exercise 9
