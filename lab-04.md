@@ -14,7 +14,7 @@ install.packages("devtools", repos = "https://cloud.r-project.org")
 
     ## 
     ## The downloaded binary packages are in
-    ##  /var/folders/tb/8n78wkj122z51qjf26rn855h0000gn/T//RtmpgToRU1/downloaded_packages
+    ##  /var/folders/tb/8n78wkj122z51qjf26rn855h0000gn/T//RtmpsVTOxo/downloaded_packages
 
 ``` r
 devtools::install_github("tidyverse/dsbox")
@@ -201,20 +201,55 @@ states, this is not a surprising result.
 ``` r
 dn %>%
   count(state) %>%
-  inner_join(states, by = c("state" = "abbreviation"))
+  inner_join(states, by = c("state" = "abbreviation")) %>%
+  mutate(locations_per_1000_sq_miles = n / (area / 1000)) %>%
+  arrange(desc(locations_per_1000_sq_miles))
 ```
 
-    ## # A tibble: 51 × 4
-    ##    state     n name                     area
-    ##    <chr> <int> <chr>                   <dbl>
-    ##  1 AK        3 Alaska               665384. 
-    ##  2 AL        7 Alabama               52420. 
-    ##  3 AR        9 Arkansas              53179. 
-    ##  4 AZ       83 Arizona              113990. 
-    ##  5 CA      403 California           163695. 
-    ##  6 CO       29 Colorado             104094. 
-    ##  7 CT       12 Connecticut            5543. 
-    ##  8 DC        2 District of Columbia     68.3
-    ##  9 DE        1 Delaware               2489. 
-    ## 10 FL      140 Florida               65758. 
+    ## # A tibble: 51 × 5
+    ##    state     n name                     area locations_per_1000_sq_miles
+    ##    <chr> <int> <chr>                   <dbl>                       <dbl>
+    ##  1 DC        2 District of Columbia     68.3                      29.3  
+    ##  2 RI        5 Rhode Island           1545.                        3.24 
+    ##  3 CA      403 California           163695.                        2.46 
+    ##  4 CT       12 Connecticut            5543.                        2.16 
+    ##  5 FL      140 Florida               65758.                        2.13 
+    ##  6 MD       26 Maryland              12406.                        2.10 
+    ##  7 NJ       10 New Jersey             8723.                        1.15 
+    ##  8 NY       56 New York              54555.                        1.03 
+    ##  9 IN       37 Indiana               36420.                        1.02 
+    ## 10 OH       44 Ohio                  44826.                        0.982
     ## # ℹ 41 more rows
+
+DC, Rhode Island, and California have the most Denny’s locations per
+thousand square miles.
+
+``` r
+lq %>%
+  count(state) %>%
+  inner_join(states, by = c("state" = "abbreviation")) %>%
+  mutate(locations_per_1000_sq_miles = n / (area / 1000)) %>%
+  arrange(desc(locations_per_1000_sq_miles))
+```
+
+    ## # A tibble: 48 × 5
+    ##    state     n name             area locations_per_1000_sq_miles
+    ##    <chr> <int> <chr>           <dbl>                       <dbl>
+    ##  1 RI        2 Rhode Island    1545.                       1.29 
+    ##  2 FL       74 Florida        65758.                       1.13 
+    ##  3 CT        6 Connecticut     5543.                       1.08 
+    ##  4 MD       13 Maryland       12406.                       1.05 
+    ##  5 TX      237 Texas         268596.                       0.882
+    ##  6 TN       30 Tennessee      42144.                       0.712
+    ##  7 GA       41 Georgia        59425.                       0.690
+    ##  8 NJ        5 New Jersey      8723.                       0.573
+    ##  9 MA        6 Massachusetts  10554.                       0.568
+    ## 10 LA       28 Louisiana      52378.                       0.535
+    ## # ℹ 38 more rows
+
+Rhode Island, Florida, and Connecticut have the most La Quinta hotels
+per thousand square miles.
+
+### Exercise 11
+
+### Exercise 12

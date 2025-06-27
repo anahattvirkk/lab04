@@ -112,9 +112,28 @@ Texas has the most La Quinta hotels and Maine has the least. Once again, due to 
 
 ### Exercise 10
 
-```{r dennys-squaremile}
+```{r dennys-1000mile}
 dn %>%
   count(state) %>%
-  inner_join(states, by = c("state" = "abbreviation"))
+  inner_join(states, by = c("state" = "abbreviation")) %>%
+  mutate(locations_per_1000_sq_miles = n / (area / 1000)) %>%
+  arrange(desc(locations_per_1000_sq_miles))
 ```
 
+DC, Rhode Island, and California have the most Denny's locations per thousand square miles.
+
+```{r laquinta-1000mile}
+lq %>%
+  count(state) %>%
+  inner_join(states, by = c("state" = "abbreviation")) %>%
+  mutate(locations_per_1000_sq_miles = n / (area / 1000)) %>%
+  arrange(desc(locations_per_1000_sq_miles))
+```
+
+Rhode Island, Florida, and Connecticut have the most La Quinta hotels per thousand square miles. 
+
+### Exercise 11
+
+
+
+### Exercise 12
