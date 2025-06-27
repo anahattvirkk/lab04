@@ -77,9 +77,35 @@ lq <- laquinta %>%
   ))
 ```
 
-```{r laquinta-us}
-lq <- lq %>%
-  filter(country == "United States")
+### Exercise 9
+
+```{r most-least-dennys}
+dn <- dennys %>%
+  filter(state %in% states$abbreviation)
+  table(dn$state)
+  
+dn_counts <- dn %>%
+  count(state, sort = TRUE)
+  top_5_dennys <- dn_counts %>% slice(1:5)
+  bottom_5_dennys <- dn_counts %>% slice_tail(n = 5)
+  
+top_5_dennys
+bottom_5_dennys
 ```
 
-### Exercise 9
+California has the most Denny's locations and Delaware has the least. This is not surprising due to the sizes and populations of the two states. 
+
+```{r most-least-laquinta}
+lq <- lq %>%
+  filter(country == "United States")
+
+lq_counts <- lq %>%
+  count(state, sort = TRUE)
+  top_5_lq <- lq_counts %>% slice(1:5)
+  bottom_5_lq <- lq_counts %>% slice_tail(n = 5)
+  
+top_5_lq
+bottom_5_lq
+```
+
+Texas has the most La Quinta hotels and Maine has the least. Once again, due to the sizes, populations, and tourist attractions of the two states, this is not a surprising result.

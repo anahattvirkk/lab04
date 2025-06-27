@@ -14,7 +14,7 @@ install.packages("devtools", repos = "https://cloud.r-project.org")
 
     ## 
     ## The downloaded binary packages are in
-    ##  /var/folders/tb/8n78wkj122z51qjf26rn855h0000gn/T//RtmpP8Q3JV/downloaded_packages
+    ##  /var/folders/tb/8n78wkj122z51qjf26rn855h0000gn/T//RtmpQKPG2v/downloaded_packages
 
 ``` r
 devtools::install_github("tidyverse/dsbox")
@@ -107,9 +107,91 @@ lq <- laquinta %>%
   ))
 ```
 
+### Exercise 9
+
+``` r
+dn <- dennys %>%
+  filter(state %in% states$abbreviation)
+  table(dn$state)
+```
+
+    ## 
+    ##  AK  AL  AR  AZ  CA  CO  CT  DC  DE  FL  GA  HI  IA  ID  IL  IN  KS  KY  LA  MA 
+    ##   3   7   9  83 403  29  12   2   1 140  22   6   3  11  56  37   8  16   4   8 
+    ##  MD  ME  MI  MN  MO  MS  MT  NC  ND  NE  NH  NJ  NM  NV  NY  OH  OK  OR  PA  RI 
+    ##  26   7  22  15  42   5   4  28   4   5   3  10  28  35  56  44  15  24  40   5 
+    ##  SC  SD  TN  TX  UT  VA  VT  WA  WI  WV  WY 
+    ##  17   3   7 200  27  28   2  49  25   3   4
+
+``` r
+dn_counts <- dn %>%
+  count(state, sort = TRUE)
+  top_5_dennys <- dn_counts %>% slice(1:5)
+  bottom_5_dennys <- dn_counts %>% slice_tail(n = 5)
+  
+top_5_dennys
+```
+
+    ## # A tibble: 5 × 2
+    ##   state     n
+    ##   <chr> <int>
+    ## 1 CA      403
+    ## 2 TX      200
+    ## 3 FL      140
+    ## 4 AZ       83
+    ## 5 IL       56
+
+``` r
+bottom_5_dennys
+```
+
+    ## # A tibble: 5 × 2
+    ##   state     n
+    ##   <chr> <int>
+    ## 1 SD        3
+    ## 2 WV        3
+    ## 3 DC        2
+    ## 4 VT        2
+    ## 5 DE        1
+
+California has the most Denny’s locations and Delaware has the least.
+This is not surprising due to the sizes and populations of the two
+states.
+
 ``` r
 lq <- lq %>%
   filter(country == "United States")
+
+lq_counts <- lq %>%
+  count(state, sort = TRUE)
+  top_5_lq <- lq_counts %>% slice(1:5)
+  bottom_5_lq <- lq_counts %>% slice_tail(n = 5)
+  
+top_5_lq
 ```
 
-### Exercise 9
+    ## # A tibble: 5 × 2
+    ##   state     n
+    ##   <chr> <int>
+    ## 1 TX      237
+    ## 2 FL       74
+    ## 3 CA       56
+    ## 4 GA       41
+    ## 5 TN       30
+
+``` r
+bottom_5_lq
+```
+
+    ## # A tibble: 5 × 2
+    ##   state     n
+    ##   <chr> <int>
+    ## 1 NH        2
+    ## 2 RI        2
+    ## 3 SD        2
+    ## 4 VT        2
+    ## 5 ME        1
+
+Texas has the most La Quinta hotels and Maine has the least. Once again,
+due to the sizes, populations, and tourist attractions of the two
+states, this is not a surprising result.
