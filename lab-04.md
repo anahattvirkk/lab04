@@ -14,7 +14,7 @@ install.packages("devtools", repos = "https://cloud.r-project.org")
 
     ## 
     ## The downloaded binary packages are in
-    ##  /var/folders/tb/8n78wkj122z51qjf26rn855h0000gn/T//RtmpsVTOxo/downloaded_packages
+    ##  /var/folders/tb/8n78wkj122z51qjf26rn855h0000gn/T//RtmpgKLzCi/downloaded_packages
 
 ``` r
 devtools::install_github("tidyverse/dsbox")
@@ -251,5 +251,40 @@ Rhode Island, Florida, and Connecticut have the most La Quinta hotels
 per thousand square miles.
 
 ### Exercise 11
+
+``` r
+dn <- dn %>%
+  mutate(establishment = "Denny's")
+
+lq <- lq %>%
+  mutate(establishment = "La Quinta")
+
+dn_lq <- bind_rows(dn, lq)
+
+ggplot(dn_lq, mapping = aes(x = longitude, y = latitude, color = establishment)) +
+  geom_point() + 
+  labs(title = "Locations of Denny’s and La Quinta in North Carolina")
+```
+
+![](lab-04_files/figure-gfm/establishment-1.png)<!-- -->
+
+``` r
+dn_lq_nc <- dn_lq %>%
+  filter(state == "NC")
+```
+
+``` r
+ggplot(dn_lq_nc, mapping = aes(x = longitude, y = latitude, color = establishment)) +
+  geom_point(alpha = 0.6) +
+  labs(title = "Locations of Denny’s and La Quinta in North Carolina",
+    x = "Longitude",
+    y = "Latitude")
+```
+
+![](lab-04_files/figure-gfm/nc-plot-1.png)<!-- -->
+
+Visually, it does not seem like Mitch Hedberg’s joke holds up as well
+here as many Denny’s locations in North Carolina are not next to La
+Quinta hotels.
 
 ### Exercise 12

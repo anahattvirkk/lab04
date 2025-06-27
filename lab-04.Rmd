@@ -134,6 +134,33 @@ Rhode Island, Florida, and Connecticut have the most La Quinta hotels per thousa
 
 ### Exercise 11
 
+```{r establishment}
+dn <- dn %>%
+  mutate(establishment = "Denny's")
 
+lq <- lq %>%
+  mutate(establishment = "La Quinta")
+
+dn_lq <- bind_rows(dn, lq)
+
+ggplot(dn_lq, mapping = aes(x = longitude, y = latitude, color = establishment)) +
+  geom_point() + 
+  labs(title = "Locations of Denny’s and La Quinta in North Carolina")
+```
+
+```{r north-carolina}
+dn_lq_nc <- dn_lq %>%
+  filter(state == "NC")
+```
+
+```{r nc-plot}
+ggplot(dn_lq_nc, mapping = aes(x = longitude, y = latitude, color = establishment)) +
+  geom_point(alpha = 0.6) +
+  labs(title = "Locations of Denny’s and La Quinta in North Carolina",
+    x = "Longitude",
+    y = "Latitude")
+```
+
+Visually, it does not seem like Mitch Hedberg's joke holds up as well here as many Denny's locations in North Carolina are not next to La Quinta hotels. 
 
 ### Exercise 12
