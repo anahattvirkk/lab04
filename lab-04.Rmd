@@ -164,3 +164,18 @@ ggplot(dn_lq_nc, mapping = aes(x = longitude, y = latitude, color = establishmen
 Visually, it does not seem like Mitch Hedberg's joke holds up as well here as many Denny's locations in North Carolina are not next to La Quinta hotels. 
 
 ### Exercise 12
+
+```{r texas}
+dn_lq_tx <- dn_lq %>%
+  filter(state == "TX")
+```
+
+```{r texas-plot}
+ggplot(dn_lq_tx, mapping = aes(x = longitude, y = latitude, color = establishment)) +
+  geom_point(alpha = 0.4) +
+  labs(title = "Locations of Denny’s and La Quinta in Texas",
+    x = "Longitude",
+    y = "Latitude")
+```
+
+Mitch Hedberg's joke holds up extremely well in Texas as all of the Denny's locations and La Quinta hotels are in very close proximity to one another. 

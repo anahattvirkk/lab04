@@ -14,7 +14,7 @@ install.packages("devtools", repos = "https://cloud.r-project.org")
 
     ## 
     ## The downloaded binary packages are in
-    ##  /var/folders/tb/8n78wkj122z51qjf26rn855h0000gn/T//RtmpgKLzCi/downloaded_packages
+    ##  /var/folders/tb/8n78wkj122z51qjf26rn855h0000gn/T//RtmpQv7dFH/downloaded_packages
 
 ``` r
 devtools::install_github("tidyverse/dsbox")
@@ -288,3 +288,22 @@ here as many Denny’s locations in North Carolina are not next to La
 Quinta hotels.
 
 ### Exercise 12
+
+``` r
+dn_lq_tx <- dn_lq %>%
+  filter(state == "TX")
+```
+
+``` r
+ggplot(dn_lq_tx, mapping = aes(x = longitude, y = latitude, color = establishment)) +
+  geom_point(alpha = 0.4) +
+  labs(title = "Locations of Denny’s and La Quinta in Texas",
+    x = "Longitude",
+    y = "Latitude")
+```
+
+![](lab-04_files/figure-gfm/texas-plot-1.png)<!-- -->
+
+Mitch Hedberg’s joke holds up extremely well in Texas as all of the
+Denny’s locations and La Quinta hotels are in very close proximity to
+one another.
