@@ -109,3 +109,12 @@ bottom_5_lq
 ```
 
 Texas has the most La Quinta hotels and Maine has the least. Once again, due to the sizes, populations, and tourist attractions of the two states, this is not a surprising result.
+
+### Exercise 10
+
+```{r dennys-squaremile}
+dn %>%
+  count(state) %>%
+  inner_join(states, by = c("state" = "abbreviation"))
+```
+

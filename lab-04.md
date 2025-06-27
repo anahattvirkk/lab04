@@ -14,7 +14,7 @@ install.packages("devtools", repos = "https://cloud.r-project.org")
 
     ## 
     ## The downloaded binary packages are in
-    ##  /var/folders/tb/8n78wkj122z51qjf26rn855h0000gn/T//RtmpQKPG2v/downloaded_packages
+    ##  /var/folders/tb/8n78wkj122z51qjf26rn855h0000gn/T//RtmpgToRU1/downloaded_packages
 
 ``` r
 devtools::install_github("tidyverse/dsbox")
@@ -195,3 +195,26 @@ bottom_5_lq
 Texas has the most La Quinta hotels and Maine has the least. Once again,
 due to the sizes, populations, and tourist attractions of the two
 states, this is not a surprising result.
+
+### Exercise 10
+
+``` r
+dn %>%
+  count(state) %>%
+  inner_join(states, by = c("state" = "abbreviation"))
+```
+
+    ## # A tibble: 51 × 4
+    ##    state     n name                     area
+    ##    <chr> <int> <chr>                   <dbl>
+    ##  1 AK        3 Alaska               665384. 
+    ##  2 AL        7 Alabama               52420. 
+    ##  3 AR        9 Arkansas              53179. 
+    ##  4 AZ       83 Arizona              113990. 
+    ##  5 CA      403 California           163695. 
+    ##  6 CO       29 Colorado             104094. 
+    ##  7 CT       12 Connecticut            5543. 
+    ##  8 DC        2 District of Columbia     68.3
+    ##  9 DE        1 Delaware               2489. 
+    ## 10 FL      140 Florida               65758. 
+    ## # ℹ 41 more rows
